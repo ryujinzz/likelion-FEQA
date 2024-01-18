@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="assets/favicon.svg" />
+    <title>리액트 펀더멘탈</title>
+    <script type="module">
+      // 리액트 모듈 불러오기
+      import React from "https://esm.sh/react";
+      //console.log(React.version);
+      import ReactDom from "http://esm.sh/react-dom";
+      console.log(`ReactDom.version = ${ReactDom.version}`);
+
+      //리액트 요소 생성
+      //<h1>리액트</h1>
+      //<p>리액트는 가장 인기 있는 프론트엔드 개발 도구 입니다.</p>
+      const h1Element = React.createElement("h1", {}, "리액트");
+      const pElement = React.createElement(
+        "p",
+        {},
+        "리액트는 UI 구축을 위한 자바스크립트 라이브러리입니다."
+      );
+      //console.log(pElement);
+
+      //나도 리액트 처럼
+      function createElement(type, props, ...children) {
+        return {
+          $$typeof: Symbol("euid.element"),
+          type,
+          props: { ...props, children },
+        };
+      }
+      // 리액트 요소 === 객체 → { $$typeof: 'Symbol(euid.element)', type, props: { children } }
+      const myElement = createElement(
+        "div",
+        { id: "app", "data-type": "HTMLDivElement" },
+        createElement("span", {}, "Hello React")
+      );
+
+      //console.log(myElement);
+      const reactDomRoot = ReactDom.createRoot(document.getElementById("root"));
+      //console.log(reactDomRoot);
+
+      //리액트 엘리먼트를 리액트 돔의 랜더 능력으로 화면에 그린다.
+      reactDomRoot.render(h1Element);
+    </script>
+  </head>
+  <body>
+    <noscript>이 앱을 사용하려면 자바스크립트 활성화가 필요합니다.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

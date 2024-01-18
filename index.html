@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta content="charset=UTF-8" />
+    <title>리액트 펀더멘탈</title>
+    <link rel="icon" href="assets/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script type="module" src="main.jsx"></script>
+    <script type="module">
+      import { createElement as h } from "https://esm.sh/react";
+      import { createRoot } from "https://esm.sh/react-dom";
+
+      // 리액트 엘리먼트 생성하기
+      const strongElement = h("strong", {}, "fundamental");
+      const h1Element = h("h1", {}, "안녕!", h("br"), "리액트.");
+      const pElement = h(
+        "p",
+        {},
+        "리액트는 사용자 인터페이스 구축을 위한 JavaScript 오픈소스 라이브러리입니다."
+      );
+
+      const appElement = h(
+        // type
+        "div",
+        // props
+        { id: "app" },
+        // ...children
+        strongElement,
+        // h1
+        h1Element,
+        // p
+        pElement
+      );
+
+      console.log(appElement);
+      createRoot(document.getElementById("root")).render(appElement);
+      // 리액트 돔 객체의 렌더 메서드로 리액트 엘리먼트 DOM에 렌더링하기
+    </script>
+  </head>
+  <body>
+    <noscript>이 앱을 사용하려면 자바스크립트 활성화가 필요합니다.</noscript>
+
+    <div id="root">
+      <!-- 
+            <div id="app">
+                <h1>리액트</h1>
+                <p>리액트는 사용자 인터페이스 구축을 위한 JavaScript 오픈소스 라이브러리입니다.</p>
+            </div> 
+            -->
+    </div>
+  </body>
+</html>
